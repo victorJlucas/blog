@@ -1,5 +1,6 @@
 <?php
 
+use App\Category;
 use Illuminate\Database\Seeder;
 
 class CategoriesTableSeeder extends Seeder
@@ -11,6 +12,14 @@ class CategoriesTableSeeder extends Seeder
      */
     public function run()
     {
-        //
+
+        $category = new Category();
+        $category->name = 'Categoría 1';
+        $category->save();
+
+        $category = new Category();
+        $category->name = 'Categoría 2';
+        $category->save();
+
     }
 }

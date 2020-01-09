@@ -13,8 +13,16 @@ class CreatePostTable extends Migration
      */
     public function up()
     {
-        Schema::create('post', function (Blueprint $table) {
+        Schema::create('posts', function (Blueprint $table) {
             $table->bigIncrements('id');
+
+            $table->string('title');
+            $table->mediumText('excerpt');
+            $table->text('body');
+            $table->timestamp('published_at')->nullable();
+            $table->unsignedBigInteger('category_id');
+            $table->foreign('category_id')->on('categories')->references('id');
+
             $table->timestamps();
         });
     }
@@ -26,6 +34,6 @@ class CreatePostTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('post');
+        Schema::dropIfExists('posts');
     }
 }
